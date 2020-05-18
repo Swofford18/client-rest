@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="height: 750px">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <b><span class="navbar-brand" th:text="${user.username}"></span></b>
+    <span class="navbar-brand">with roles:</span>
+    <span class="navbar-brand" th:each="role : ${user.roles}">
+        <label class="mt-0 mb-0" th:if="${role.name == 'ROLE_ADMIN'}">ADMIN</label>
+        <label class="mt-0 mb-0" th:if="${role.name == 'ROLE_USER'}">USER</label>
+    </span>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto"></ul>
+        <a class="nav-link text-light" href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="row h-100">
+
+    <div class="col-2 sidebar bg-white pr-0">
+        <ul class="nav nav-pills flex-column mt-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="/user">User</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-10 sidebar bg-light pr-5 pl-4">
+        <h1 class="mt-3 mb-3">User information-page</h1>
+        <h4 class="border-top border-right border-left pt-2 pl-4 pb-2 mb-0">All users</h4>
+        <div class="border bg-white pt-3 pl-3 pr-3 pb-3 mt-0">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td>
+                        <span th:each="role : ${user.roles}">
+                            <label th:if="${role.name == 'ROLE_ADMIN'}">ADMIN</label>
+                            <label th:if="${role.name == 'ROLE_USER'}">USER</label>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
