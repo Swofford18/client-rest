@@ -1,39 +1,18 @@
 package client.service;
 
-import client.model.Role;
 import client.model.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    private UserClient userClient;
+    List<User> allUsers();
 
-    public UserService(UserClient userClient) {
-        this.userClient = userClient;
-    }
+    void saveUser(User user);
 
-    public List<User> allUsers() {
-        return userClient.getAllUsers();
-    }
+    User findById(Long id);
 
-    public void saveUser(User user) {
-        userClient.saveUser(user);
-    }
+    void editUser(User user);
 
-    public User findById(Long id) {
-        return userClient.getUserById(id);
-    }
-
-    public void editUser(User user) {
-        userClient.editUser(user);
-    }
-
-    public void delete(User user) {
-        userClient.deleteUser(user);
-    }
-
+    void delete(User user);
 }

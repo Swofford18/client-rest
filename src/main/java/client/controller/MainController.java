@@ -2,25 +2,22 @@ package client.controller;
 
 import client.model.Role;
 import client.model.User;
-import client.service.UserClient;
-import client.service.UserService;
+import client.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.security.Principal;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
 @RequestMapping("/")
 public class MainController {
 
-    private UserService userService;
+    private UserServiceImpl userService;
 
-    public MainController(UserService userService) {
+    public MainController(UserServiceImpl userService) {
         this.userService = userService;
     }
 

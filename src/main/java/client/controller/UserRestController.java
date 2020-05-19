@@ -2,8 +2,8 @@ package client.controller;
 
 import client.model.Role;
 import client.model.User;
-import client.service.RoleService;
-import client.service.UserService;
+import client.service.RoleServiceImpl;
+import client.service.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.Set;
 @RestController
 public class UserRestController {
 
-    private UserService userService;
-    private RoleService roleService;
+    private UserServiceImpl userService;
+    private RoleServiceImpl roleService;
 
-    public UserRestController(UserService userService, RoleService roleService) {
+    public UserRestController(UserServiceImpl userService, RoleServiceImpl roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
